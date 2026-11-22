@@ -2,6 +2,8 @@
 
 An AI and mathematics discussion group at the University of Science and Technology of China (USTC).
 
+**Course QQ Group: 498805144**
+
 Hi everyone! This group is built around self-study and discussion, with no scheduled lectures. I will provide topics and reference materials; you will study independently and write up what you have learned to demonstrate your understanding.
 
 ## Topics for This Semester
