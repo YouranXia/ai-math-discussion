@@ -5,10 +5,10 @@ def train_bpe(input_path, vocab_size, special_tokens):
     if special_tokens:
         patterns = []
         for token in sorted(special_tokens, key=len, reverse=True):
-            patterns.append(re.escape(token))
+            patterns.append(re.escape(token))     #re指开头的regex。escape()函数将正则表达式的字符串进行转义
 
-        split_pattern = "|".join(patterns)
-        documents = re.split(split_pattern, a)
+        split_pattern = "|".join(patterns)          #相当于给这些被定义成分隔符的字段中间加上|，可以进行或的判断
+        documents = re.split(split_pattern, a)      #将文章根据特殊分隔符进行分割，此后documents变成一个文章的列表
     else:
         documents = [a]   #题目给出每个文章之间的分隔符
     PAT = r"""'(?:[sdmt]|ll|ve|re)| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+"""
@@ -21,6 +21,10 @@ def train_bpe(input_path, vocab_size, special_tokens):
             for i in raw_bytes:
                 tokens.append(bytes([i]))
             token_groups.append(tokens)
+    group_counts={}             #空字典
+    for tokens in token_groups:
+        key=tuple(tokens)
+        group_counts[key]=group_counts.get(key, 0)+1
     vocabulary = {}
     for i in range(256):
         vocabulary[i] = bytes([i])
